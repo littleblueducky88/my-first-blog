@@ -16,5 +16,14 @@
       <h2>We're Talking About:</h2>
       <ul><li>fraudsters</li><li>jerks</li><li>and why you shouldn't trust media agencies</li></ul>
     </div>
+
+    {% for post in posts %}
+      <div>
+        <p> published:  {{ post }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaks }}</p>
+      </div>
+    {% endfor %}
+
   </body>
 </html>
