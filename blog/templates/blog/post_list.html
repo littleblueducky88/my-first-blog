@@ -1,29 +1,21 @@
-<html>
-  <head>
-    <title>The Bad Ad Blog</title>
-  </head>
-  <body>
-    <div>
-      <h1>The Bad Ad Blog</h1>
-    </div>
+{% extends "blog/base.html" %}
 
-    <div>
-      <p>Hi there!</p>
-      <p>It works!</p>
-    </div>
+{% block content %}
+  <div>
+    <h1>The Bad Ad Blog</h1>
+  </div>
 
-    <div>
-      <h2>We're Talking About:</h2>
-      <ul><li>fraudsters</li><li>jerks</li><li>and why you shouldn't trust media agencies</li></ul>
-    </div>
+  <div>
+    <p>A badass new blog. Hi! It works</p>
+  </div>
 
-    {% for post in posts %}
-      <div>
-        <p> published:  {{ post }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaks }}</p>
+  {% for post in posts %}
+    <div class="post">
+      <div class="date">
+        {{ post.published_date }}
       </div>
-    {% endfor %}
-
-  </body>
-</html>
+      <h1><a href="{% url "post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
+      <p>{{ post.text|linebreaks }}</p>
+    </div>
+  {% endfor %}
+{% endblock content %}
